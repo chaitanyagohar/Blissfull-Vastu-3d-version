@@ -15,3 +15,7 @@ export default function Magnetic({ children, strength = 0.28 }: { children: Reac
   }, [strength]);
   return <span ref={ref} className="magnetic">{children}</span>;
 }
+
+
+
+// Maine kaha yum hai hum
