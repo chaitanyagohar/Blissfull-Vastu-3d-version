@@ -8,7 +8,7 @@ import { LOSHU } from '@/lib/numerology';
 
 const service = services.find((s) => s.id === 'numerology')!;
 const path = '/numerology-consultation';
-export const metadata: Metadata = pageMeta({ path, title: `Numerology Consultation in Delhi NCR & Online · ${site.name}`, description: 'Numerology consultations with Anshikaaa Purii: your date of birth and name read together. Online or in person across Delhi NCR, in Hindi or English.' });
+export const metadata: Metadata = pageMeta({ path, title: `Numerology Consultation in Delhi NCR & Online · ${site.name}`, description: 'Numerology consultations with Anshikaa Purii: your date of birth and name read together. Online or in person across Delhi NCR, in Hindi or English.' });
 const COVERS = [
   ['Root number', 'Mulank: from the day you were born.'],
   ['Destiny number', 'Bhagyank: from your full date of birth.'],

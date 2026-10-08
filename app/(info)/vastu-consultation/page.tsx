@@ -8,7 +8,7 @@ import { bookHref, extProps } from '@/lib/links';
 
 const service = services.find((s) => s.id === 'vastu')!;
 const path = '/vastu-consultation';
-export const metadata: Metadata = pageMeta({ path, title: `Vastu Consultation in Delhi NCR · ${site.name}`, description: 'Vastu consultations with Anshikaaa Purii for homes and workplaces across Delhi NCR: online, in person or as a site visit, in Hindi or English.' });
+export const metadata: Metadata = pageMeta({ path, title: `Vastu Consultation in Delhi NCR · ${site.name}`, description: 'Vastu consultations with Anshikaa Purii for homes and workplaces across Delhi NCR: online, in person or as a site visit, in Hindi or English.' });
 const COVERS = [
   ['Directions', 'How the plan sits on the eight directions, and which rooms face where.'],
   ['The nine zones', 'The Vastu Purusha Mandala read across your floor plan.'],

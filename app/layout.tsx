@@ -3,12 +3,10 @@ import localFont from 'next/font/local';
 import { site } from '@/data/site';
 import { SEO_TITLE } from '@/lib/seo';
 import './globals.css';
+import './type.css';
 
 const serif = localFont({
-  src: [
-    { path: './fonts/instrument-serif-400.woff2', weight: '400', style: 'normal' },
-    { path: './fonts/instrument-serif-400-italic.woff2', weight: '400', style: 'italic' }
-  ],
+  src: [{ path: './fonts/marcellus-400.woff2', weight: '400', style: 'normal' }],
   variable: '--font-serif', display: 'swap'
 });
 const sans = localFont({

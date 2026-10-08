@@ -6,7 +6,7 @@ import { pageMeta } from '@/lib/seo';
 import { bookHref, whatsappHref, extProps } from '@/lib/links';
 
 const path = '/contact';
-export const metadata: Metadata = pageMeta({ path, title: `Contact & Booking · ${site.name}`, description: 'Book a Vastu or numerology consultation with Anshikaaa Purii: online, in person or a site visit across Delhi NCR.' });
+export const metadata: Metadata = pageMeta({ path, title: `Contact & Booking · ${site.name}`, description: 'Book a Vastu or numerology consultation with Anshikaa Purii: online, in person or a site visit across Delhi NCR.' });
 
 export default function ContactPage() {
   const book = bookHref(), wa = whatsappHref();

@@ -7,14 +7,14 @@ export type Social = { label: string; handle: string; url: string | null };
 
 export const site = {
   brand: 'Blissfull Vastu',
-  name: 'Anshikaaa Purii',
-  firstName: 'Anshikaaa',
+  name: 'Anshikaa Purii',
+  firstName: 'Anshikaa',
   disciplines: ['Vastu', 'Numerology'],
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.example.com', // e.g. https://www.blissfullvastu.com
   stage: 'proposal' as 'proposal' | 'live',
   demo: true,
   astrology: false,
-  description: 'Blissfull Vastu: Vastu and numerology consultations with Anshikaaa Purii, online and in person across Delhi NCR, in Hindi and English.',
+  description: 'Blissfull Vastu: Vastu and numerology consultations with Anshikaa Purii, online and in person across Delhi NCR, in Hindi and English.',
   languages: ['Hindi', 'English'],
   areaServed: ['Delhi', 'Gurugram', 'Noida', 'Ghaziabad', 'Faridabad'],
   modes: ['Online consultations', 'In-person consultations', 'Site visits across Delhi NCR'],
@@ -33,7 +33,7 @@ export const site = {
   ] as Social[],
   photo: portrait as Media | null,
   bio: [
-    'Anshikaaa Purii works with two traditional systems: Vastu, which reads the space you live and work in, and numerology, which reads the numbers in your name and date of birth.',
+    'Anshikaa Purii works with two traditional systems: Vastu, which reads the space you live and work in, and numerology, which reads the numbers in your name and date of birth.',
     'Consultations are in Hindi or English, online or in person, with site visits across Delhi NCR.'
   ] as string[] | null,
   approach: [ // DEMO

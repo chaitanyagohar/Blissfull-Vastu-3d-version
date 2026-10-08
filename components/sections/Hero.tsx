@@ -1,13 +1,21 @@
 'use client';
-/* Opening as an architect's drawing sheet: crop marks, ruler, discipline tags, live IST clock,
-   title block and a slow word ribbon around the existing headline and 3D square. */
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+/* Opening: drawing-sheet details + three alternating scenes (text ↔ image) while the 3D square unfolds. */
+import Image from 'next/image';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { useScrub } from '@/lib/useScrub';
 import { site } from '@/data/site';
+import Img from '@/components/media/Img';
 import s from './Hero.module.css';
 
 const RIBBON = ['Vastu', 'Numerology', 'Delhi NCR', 'Online & in person', 'Site visits', 'Hindi & English', 'Nine zones', 'Nine numbers'];
+
+type Scene = { cls: string; side: 'left' | 'right'; kicker: string; text: ReactNode; media: 'interior' | 'numbers' | 'portrait' };
+const SCENES: Scene[] = [
+  { cls: 'scene-1', side: 'right', kicker: '01 · Space', text: <>Every room <em>faces</em> somewhere.</>, media: 'interior' },
+  { cls: 'scene-2', side: 'left', kicker: '02 · Number', text: <>Every name <em>adds up</em> to something.</>, media: 'numbers' },
+  { cls: 'scene-3', side: 'right', kicker: `03 · ${site.name}`, text: <>{site.firstName} reads <em>where the two meet.</em></>, media: 'portrait' }
+];
 
 function useIST() {
   const [t, setT] = useState('--:--');
@@ -21,16 +29,13 @@ function useIST() {
   return t;
 }
 
-const Compass = () => (
-  <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" strokeWidth="1" /><path d="M8 3.2 9.4 8 8 12.8 6.6 8Z" fill="currentColor" /></svg>
-);
-const Grid = () => (
-  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h12v12H2zM6 2v12M10 2v12M2 6h12M2 10h12" fill="none" stroke="currentColor" strokeWidth="1" /><rect x="6.6" y="6.6" width="2.8" height="2.8" fill="currentColor" /></svg>
-);
+const Compass = () => (<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" strokeWidth="1" /><path d="M8 3.2 9.4 8 8 12.8 6.6 8Z" fill="currentColor" /></svg>);
+const Grid = () => (<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h12v12H2zM6 2v12M10 2v12M2 6h12M2 10h12" fill="none" stroke="currentColor" strokeWidth="1" /><rect x="6.6" y="6.6" width="2.8" height="2.8" fill="currentColor" /></svg>);
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const time = useIST();
+  const p = site.photo;
 
   useEffect(() => {
     let play: (() => void) | null = null;
@@ -51,22 +56,29 @@ export default function Hero() {
   }, []);
 
   useScrub(ref, (tl) => {
-    tl.to('.hero-title', { yPercent: -25, opacity: 0, duration: 0.22 }, 0.06)
+    tl.to('.hero-title', { yPercent: -25, opacity: 0, duration: 0.2 }, 0.05)
       .to('.hero-foot, .hero-meta, .hero-block, .hero-chip, .hero-label, .hero-marquee', { opacity: 0, duration: 0.08 }, 0.04);
-    ['.s1', '.s2', '.s3'].forEach((sel, i) => {
-      const at = 0.3 + i * 0.2;
-      tl.fromTo(sel, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.07 }, at);
-      if (i < 2) tl.to(sel, { opacity: 0, y: -30, duration: 0.06 }, at + 0.14);
-      else tl.to(sel, { opacity: 0, duration: 0.05 }, 0.94);
+
+    SCENES.forEach((sc, i) => {
+      const at = 0.26 + i * 0.22, sel = `.${sc.cls}`, dir = sc.side === 'right' ? 1 : -1;
+      tl.set(sel, { autoAlpha: 1 }, at)
+        .fromTo(`${sel} .scene-img`, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.08, ease: 'power2.out' }, at)
+        .fromTo(`${sel} .scene-zoom`, { scale: 1.22 }, { scale: 1, duration: 0.16 }, at)
+        .fromTo(`${sel} .scene-text`, { autoAlpha: 0, x: 70 * dir }, { autoAlpha: 1, x: 0, duration: 0.08, ease: 'power2.out' }, at + 0.02);
+      if (i < SCENES.length - 1) {
+        tl.to(`${sel} .scene-img`, { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.06, ease: 'power2.in' }, at + 0.16)
+          .to(`${sel} .scene-text`, { autoAlpha: 0, x: -50 * dir, duration: 0.05, ease: 'power2.in' }, at + 0.16)
+          .set(sel, { autoAlpha: 0 }, at + 0.22);
+      } else {
+        tl.to(sel, { autoAlpha: 0, duration: 0.05 }, 0.94);
+      }
     });
   });
 
   return (
-    <section ref={ref} id="top" data-chapter="0" className={`chapter ${s.root}`} style={{ '--h': '260vh' } as CSSProperties} aria-labelledby="hero-title">
+    <section ref={ref} id="top" data-chapter="0" className={`chapter ${s.root}`} style={{ '--h': '300vh' } as CSSProperties} aria-labelledby="hero-title">
       <div className={`stage hero ${s.stage}`}>
         <div className={s.glow} aria-hidden="true" />
-        <div className={s.frame} aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className={s.ruler} aria-hidden="true" />
 
         <div className={s.top}>
           <div className={s.topLeft}>
@@ -89,10 +101,24 @@ export default function Hero() {
           <span className="hero-h1-sub">Vastu &amp; numerology consultations with {site.name} · Delhi NCR</span>
         </h1>
 
-        <div className="hero-seq">
-          <p className="seq s1">Every room <em>faces</em> somewhere.</p>
-          <p className="seq s2">Every name <em>adds up</em> to something.</p>
-          <p className="seq s3">{site.name.split(' ')[0]} reads <em>where the two meet.</em></p>
+        {/* three alternating scenes */}
+        <div className={s.scenes}>
+          {SCENES.map((sc, i) => (
+            <div key={sc.cls} className={`${sc.cls} ${s.scene} ${sc.side === 'right' ? s.textRight : s.textLeft}`}>
+              <figure className={`scene-img ${s.media}`}>
+                <div className={`scene-zoom ${s.zoom}`}>
+                  {sc.media === 'portrait'
+                    ? (p && <Image src={p.src} alt={p.alt} fill sizes="(max-width: 820px) 46vw, 26vw" style={{ objectFit: 'cover', objectPosition: p.focus || 'center' }} />)
+                    : <Img id={sc.media} ratio="4 / 5" sizes="(max-width: 820px) 46vw, 26vw" className={s.img} />}
+                </div>
+                <figcaption className={`label ${s.fig}`}>Fig. 0{i + 1}</figcaption>
+              </figure>
+              <div className={`scene-text ${s.text}`}>
+                <span className="label">{sc.kicker}</span>
+                <p className="display">{sc.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className={s.bottom}>
@@ -109,9 +135,7 @@ export default function Hero() {
         </div>
 
         <div className={`hero-marquee ${s.marquee}`} aria-hidden="true">
-          <div className={s.track}>
-            {[...RIBBON, ...RIBBON].map((w, i) => <span key={i}>{w}<i /></span>)}
-          </div>
+          <div className={s.track}>{[...RIBBON, ...RIBBON].map((w, i) => <span key={i}>{w}<i /></span>)}</div>
         </div>
       </div>
     </section>

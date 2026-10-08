@@ -21,14 +21,14 @@ type Pose = {
 };
 
 export const POSES: Pose[] = [
-  /* 0 opening */    { cam: [0, 2.1, 2.5], look: [0, 0, 0], bg: '#FFF6EC', line: '#351C0C', tile: '#E3D6CA', glow: '#FFD4AE', slab: 0.14, numH: 0, spread: 0, plan: 0, nums: 0, orbit: 0, stars: 0, dim: 0, cGlow: 0.35, shadow: 0.5, sun: 0, floor: 0, jaali: 0, amb: 0.95 },
+  /* 0 opening */    { cam: [0, 2.1, 2.5], look: [0, 0.35, 0], bg: '#FFF6EC', line: '#351C0C', tile: '#E3D6CA', glow: '#FFD4AE', slab: 0.14, numH: 0, spread: 0, plan: 0, nums: 0, orbit: 0, stars: 0, dim: 0, cGlow: 0.35, shadow: 0.5, sun: 0, floor: 0, jaali: 0, amb: 0.95 },
   /* 1 idea */       { cam: [4.4, 3.0, 5.8], look: [0, 0.3, 0], bg: '#F3EAE1', line: '#351C0C', tile: '#CEC1B5', glow: '#FFD4AE', slab: 0.9, numH: 0, spread: 1, plan: 0, nums: 0, orbit: 0, stars: 0, dim: 0, cGlow: 0.2, shadow: 0.35, sun: 0, floor: 0, jaali: 0, amb: 0.9 },
-  /* 2 vastu */      { cam: [0, 8.2, 0.9], look: [0, 0, 0], bg: '#FBF1E6', line: '#351C0C', tile: '#E9E1D9', glow: '#674C37', slab: 0.06, numH: 0, spread: 0, plan: 1, nums: 0, orbit: 0, stars: 0, dim: 0, cGlow: 0.1, shadow: 1, sun: 1, floor: 0, jaali: 0, amb: 0.9 },
+  /* 2 vastu */      { cam: [0, 8.2, 0.9], look: [0, 0.35, 0], bg: '#FBF1E6', line: '#351C0C', tile: '#E9E1D9', glow: '#674C37', slab: 0.06, numH: 0, spread: 0, plan: 1, nums: 0, orbit: 0, stars: 0, dim: 0, cGlow: 0.1, shadow: 1, sun: 1, floor: 0, jaali: 0, amb: 0.9 },
   /* 3 numerology */ { cam: [5.2, 4.6, 5.2], look: [0, 0.7, 0], bg: '#FFD4AE', line: '#351C0C', tile: '#FFF6EC', glow: '#674C37', slab: 0.1, numH: 1, spread: 0, plan: 0, nums: 1, orbit: 0, stars: 0, dim: 0, cGlow: 0.1, shadow: 0.6, sun: 0, floor: 0, jaali: 0, amb: 0.9 },
   /* 4 navagraha */  { cam: [0, 2.4, 9.4], look: [0, 0.2, 0], bg: '#000000', line: '#CEC1B5', tile: '#1A1A1A', glow: '#FFD4AE', slab: 0.02, numH: 0, spread: 0, plan: 0, nums: 0, orbit: 1, stars: 1, dim: 0, cGlow: 0.4, shadow: 0, sun: 0, floor: 0, jaali: 0, amb: 0.2 },
   /* 5 light */      { cam: [0, 1.5, 4.6], look: [0, 0.1, -0.7], bg: '#000000', line: '#FFD4AE', tile: '#8A6A50', glow: '#FFD4AE', slab: 0.03, numH: 0, spread: 0, plan: 0, nums: 0, orbit: 0, stars: 0, dim: 0, cGlow: 0.2, shadow: 0, sun: 0, floor: 1, jaali: 1, amb: 0.12 },
-  /* 6 studio */     { cam: [0, 9.5, 10.5], look: [0, 0, 0], bg: '#FFF6EC', line: '#351C0C', tile: '#E3D6CA', glow: '#FFD4AE', slab: 0.3, numH: 0, spread: 0.35, plan: 0.25, nums: 0, orbit: 0.2, stars: 0, dim: 1, cGlow: 0.2, shadow: 0.3, sun: 0, floor: 0, jaali: 0, amb: 0.9 },
-  /* 7 final */      { cam: [0, 2.3, 2.9], look: [0, 0, 0], bg: '#FFF6EC', line: '#674C37', tile: '#CEC1B5', glow: '#FFD4AE', slab: 0.14, numH: 0, spread: 0, plan: 0, nums: 0, orbit: 0.15, stars: 0, dim: 0, cGlow: 0.6, shadow: 0.5, sun: 0, floor: 0, jaali: 0, amb: 0.95 }
+  /* 6 studio */     { cam: [0, 9.5, 10.5], look: [0, 0.35, 0], bg: '#FFF6EC', line: '#351C0C', tile: '#E3D6CA', glow: '#FFD4AE', slab: 0.3, numH: 0, spread: 0.35, plan: 0.25, nums: 0, orbit: 0.2, stars: 0, dim: 1, cGlow: 0.2, shadow: 0.3, sun: 0, floor: 0, jaali: 0, amb: 0.9 },
+  /* 7 final */      { cam: [0, 2.3, 2.9], look: [0, 0.35, 0], bg: '#FFF6EC', line: '#674C37', tile: '#CEC1B5', glow: '#FFD4AE', slab: 0.14, numH: 0, spread: 0, plan: 0, nums: 0, orbit: 0.15, stars: 0, dim: 0, cGlow: 0.6, shadow: 0.5, sun: 0, floor: 0, jaali: 0, amb: 0.95 }
 ];
 
 export const SHIFT = [0, 0.9, 1.2, 1.0, 0.7, 0, 0, 0];

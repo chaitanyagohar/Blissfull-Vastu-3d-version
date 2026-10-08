@@ -1,0 +1,21 @@
+/* 
+html { font-synthesis: none; }
+
+.display { letter-spacing: -0.005em; line-height: 1.02; }
+.display em, .seq em, .sum em, .compass-read em { font-style: normal; color: var(--coffee); }
+[data-theme='dark'] .display em { color: var(--peach); }
+.hero-title { font-size: clamp(54px, 10.4vw, 192px); }
+.pword .pword-w { font-size: clamp(72px, 14.5vw, 260px); }
+.h2 { font-size: clamp(38px, 5.3vw, 82px); }
+.name { font-size: clamp(54px, 7.4vw, 124px); }
+.seq { line-height: 1.12; }
+.tile-card h3 { font-size: clamp(32px, 2.8vw, 46px); }
+.footer-name { letter-spacing: 0.01em; }
+.gl-num { letter-spacing: 0; }
+
+@media (max-width: 820px) {
+  .hero-title { font-size: clamp(50px, 14vw, 100px); }
+  .h2 { font-size: clamp(32px, 9vw, 50px); }
+  .pword .pword-w { font-size: clamp(64px, 20vw, 120px); }
+  .hero-seq { font-size: clamp(26px, 7.6vw, 40px); }
+} */

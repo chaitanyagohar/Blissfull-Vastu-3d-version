@@ -6,7 +6,7 @@ export type Slot = { id: string; kind: 'image' | 'video'; file: string; poster?:
 
 export const portrait: Media = {
   src: '/images/Anshikaa.jpeg',
-  alt: 'Anshikaaa Purii of Blissfull Vastu in a red embroidered suit with gold jewellery, seated in a warmly lit room',
+  alt: 'Anshikaa Purii of Blissfull Vastu in a red embroidered suit with gold jewellery, seated in a warmly lit room',
   width: 900, height: 833, focus: '52% 24%', source: 'Client', license: 'Client-owned'
 };
 
@@ -19,10 +19,10 @@ export function slot(id: string): Slot {
 
 export const media = {
   portrait,
-  planetTextures: false,
+  planetTextures: true,
   planets: {
     sun: '/textures/planets/2k_sun.jpg', moon: '/textures/planets/2k_moon.jpg', mercury: '/textures/planets/2k_mercury.jpg',
-    venus: '/textures/planets/2k_venus_atmosphere.jpg', mars: '/textures/planets/2k_mars.jpg', jupiter: '/textures/planets/2k_jupiter.jpg',
+    venus: '/textures/planets/2k_venus_surface.jpg', mars: '/textures/planets/2k_mars.jpg', jupiter: '/textures/planets/2k_jupiter.jpg',
     saturn: '/textures/planets/2k_saturn.jpg', saturnRing: '/textures/planets/2k_saturn_ring_alpha.png'
   } as Record<string, string>
 };

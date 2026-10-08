@@ -302,3 +302,5 @@ html.no-webgl #numerology { background: var(--peach); }
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
   .loader { display: none; }
 }
+
+
