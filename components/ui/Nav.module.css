@@ -47,7 +47,7 @@
 .cta :global(.btn) { padding: 13px 18px; }
 .compact .cta :global(.btn) { padding: 11px 16px; }
 
-.burger { display: none; position: relative; width: 46px; height: 46px; border: 1px solid currentColor; }
+.burger { display: none; position: relative; width: 46px; height: 46px; }
 .burger i { position: absolute; left: 12px; right: 12px; height: 1.5px; background: currentColor; transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), top 0.5s cubic-bezier(0.65, 0, 0.35, 1); }
 .burger i:first-child { top: 18px; }
 .burger i:last-child { top: 26px; }
