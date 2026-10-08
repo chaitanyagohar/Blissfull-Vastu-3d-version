@@ -5,7 +5,7 @@ export type Media = { src: string; alt: string; width: number; height: number; f
 export type Slot = { id: string; kind: 'image' | 'video'; file: string; poster?: string; alt: string; w: number; h: number; focus?: string; tone: string[]; caption: string; source: string; license: string; client?: boolean; ready: boolean };
 
 export const portrait: Media = {
-  src: '/images/Anshikaaa-purii-blissfull-vastu-numerology-delhi.jpg',
+  src: '/images/Anshikaa.jpeg',
   alt: 'Anshikaaa Purii of Blissfull Vastu in a red embroidered suit with gold jewellery, seated in a warmly lit room',
   width: 900, height: 833, focus: '52% 24%', source: 'Client', license: 'Client-owned'
 };

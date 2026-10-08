@@ -11,12 +11,14 @@ const progress = () => { const P = sample(); return P.i < 3 ? 0 : P.i === 3 ? ea
 
 export function LoShuPath() {
   const group = useRef<THREE.Group>(null!);
-  const { geo, mat } = useMemo(() => {
+  const { geo, mat, obj } = useMemo(() => {
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array((8 * SUB + 1) * 3), 3));
-    return { geo: g, mat: new THREE.LineBasicMaterial({ color: '#674C37', transparent: true, depthTest: false }) };
+    const m = new THREE.LineBasicMaterial({ color: '#674C37', transparent: true, depthTest: false });
+    return { geo: g, mat: m, obj: new THREE.Line(g, m) };
   }, []);
   const a = useMemo(() => new THREE.Vector3(), []), b = useMemo(() => new THREE.Vector3(), []);
+
   useFrame(() => {
     const P = sample();
     const v = Math.max(P.nums, world.hoverService === 'numerology' ? 0.7 * P.dim : 0);
@@ -26,14 +28,21 @@ export function LoShuPath() {
     const top = (n: number, out: THREE.Vector3) => { const [x, z] = tileXZ(LOSHU.indexOf(n)); return out.set(x, slabHeight(n) + 0.03, z); };
     const pos = geo.getAttribute('position') as THREE.BufferAttribute;
     let k = 0;
-    for (let n = 1; n < 9; n++) { top(n, a); top(n + 1, b); for (let s = 0; s < SUB; s++) { const t = s / SUB; pos.setXYZ(k++, lerp(a.x, b.x, t), lerp(a.y, b.y, t) + Math.sin(t * Math.PI) * 0.25, lerp(a.z, b.z, t)); } }
+    for (let n = 1; n < 9; n++) {
+      top(n, a); top(n + 1, b);
+      for (let s = 0; s < SUB; s++) {
+        const t = s / SUB;
+        pos.setXYZ(k++, lerp(a.x, b.x, t), lerp(a.y, b.y, t) + Math.sin(t * Math.PI) * 0.25, lerp(a.z, b.z, t));
+      }
+    }
     top(9, a); pos.setXYZ(k, a.x, a.y, a.z);
     pos.needsUpdate = true;
     const prog = world.hoverService === 'numerology' && P.dim > 0.5 ? 1 : progress();
     geo.setDrawRange(0, Math.max(0, Math.floor(prog * (8 * SUB + 1))));
     mat.opacity = v * 0.95;
   });
-  return <group ref={group}><line geometry={geo} material={mat} /></group>;
+
+  return <group ref={group}><primitive object={obj} /></group>;
 }
 
 export function Numerals() {
