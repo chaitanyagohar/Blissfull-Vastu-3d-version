@@ -68,7 +68,7 @@ export default function Navagraha() {
   }, [res]);
 
   const tmp = useMemo(() => new THREE.Vector3(), []), end = useMemo(() => new THREE.Vector3(), []), centre = useMemo(() => new THREE.Vector3(0, 0.25, 0), []);
-
+  const proj = useMemo(() => new THREE.Vector3(), []);
   useFrame((state, dt) => {
     const P = sample();
     const time = state.clock.elapsedTime;
@@ -79,7 +79,6 @@ export default function Navagraha() {
     starsRef.current.visible = P.stars > 0.01;
     res.fieldMat.opacity = P.stars * 0.7; res.brightMat.opacity = P.stars; res.figMat.opacity = P.stars * 0.18;
     if (!world.reduced) starsRef.current.rotation.y = 1.9 + time * 0.004;
-    if (!vis) return;
     const orbitVis = Math.max(P.orbit, P.i === 3 ? born * 0.6 : 0);
     rings.current.forEach((r, k) => {
       if (!r) return;
@@ -111,7 +110,12 @@ export default function Navagraha() {
       labels.current[g.id]?.position.set(tmp.x, tmp.y + sc * 1.7 + 0.14, tmp.z);
       const el = labelEls.current[g.id];
       if (el) { el.style.opacity = String(P.orbit * (1 - fin) * (P.i === 6 ? 0 : 1) * (focus ? 1 : 0.75)); el.classList.toggle('hot', focus); }
-      if (g.id === 'surya') sunLight.current.position.copy(tmp);
+      if (g.id === 'surya') {
+        sunLight.current.position.copy(tmp);
+        proj.copy(tmp).project(state.camera);
+        world.sunScreen.x = (proj.x + 1) / 2;
+        world.sunScreen.y = (1 - proj.y) / 2;
+      }
     }
     sunLight.current.intensity = 2.6 * Math.max(P.orbit, born * (P.i <= 4 ? 1 : 0)) * (1 - fin);
   });

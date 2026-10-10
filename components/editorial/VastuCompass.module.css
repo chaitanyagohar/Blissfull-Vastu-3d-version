@@ -22,3 +22,10 @@
   100% { transform: rotate(-7deg); }
 }
 @media (prefers-reduced-motion: reduce) { .needle { animation: none; } }
+
+
+/* on dark backgrounds (footer) */
+.onDark { color: var(--cream); }
+.onDark .sk { fill: var(--peach); }
+.onDark .nDark { fill: var(--peach); }
+.onDark .pin { fill: var(--espresso); stroke: var(--cream); }

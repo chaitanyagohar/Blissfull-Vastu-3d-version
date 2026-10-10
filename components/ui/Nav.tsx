@@ -97,7 +97,7 @@ export default function Nav() {
         <nav className={s.links} ref={linksRef} aria-label="Main">
           {LINKS.map((l, i) => (
             <a key={l.id} href={`#${l.id}`} data-id={l.id} className={`${s.link} ${active === l.id ? s.on : ''}`} aria-current={active === l.id ? 'location' : undefined}>
-              <sup>0{i + 1}</sup>
+              
               <span className={s.roll}><span>{l.label}</span><span aria-hidden="true">{l.label}</span></span>
             </a>
           ))}
@@ -117,7 +117,7 @@ export default function Nav() {
         <nav className={s.menuLinks} aria-label="Mobile">
           {LINKS.map((l, i) => (
             <a key={l.id} href={`#${l.id}`} tabIndex={open ? 0 : -1} style={{ '--i': i } as CSSProperties}>
-              <span className={s.menuNum}>0{i + 1}</span>{l.label}
+            
             </a>
           ))}
         </nav>

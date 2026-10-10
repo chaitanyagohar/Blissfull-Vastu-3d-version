@@ -9,7 +9,7 @@ const pt = (deg: number, r: number) => {
 const ZONES = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 const SANSKRIT = ['Uttara', 'Ishanya', 'Purva', 'Agneya', 'Dakshina', 'Nairutya', 'Paschima', 'Vayavya'];
 
-export default function VastuCompass({ className = '' }: { className?: string }) {
+export default function VastuCompass({ className = '', onDark = false }: { className?: string; onDark?: boolean }) {
   const ticks = Array.from({ length: 72 }, (_, k) => {
     const deg = k * 5, long = deg % 30 === 0;
     const [x1, y1] = pt(deg, 190), [x2, y2] = pt(deg, long ? 174 : 182);
@@ -22,7 +22,7 @@ export default function VastuCompass({ className = '' }: { className?: string })
   }).join('');
 
   return (
-    <svg className={`${s.svg} ${className}`} viewBox="0 0 400 400" role="img" aria-label="Vastu compass: sixteen zones around a nine-square plan, north at the top">
+    <svg className={`${s.svg} ${onDark ? s.onDark : ''} ${className}`} viewBox="0 0 400 400" role="img" aria-label="Vastu compass: sixteen zones around a nine-square plan, north at the top">
       {/* rings */}
       <g fill="none" stroke="currentColor">
         <circle cx={C} cy={C} r="190" strokeWidth="1" />

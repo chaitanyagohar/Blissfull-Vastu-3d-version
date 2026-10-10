@@ -72,7 +72,8 @@ export function sample() {
   camOf(i, f, ca); camOf(j, 0, cb); S.cam.copy(ca).lerp(cb, k);
   S.look.set(...A.look).lerp(cb.set(...B.look), k);
   S.rotY = lerp(rotOf(i, f), rotOf(j, 0), k);
-  S.bg.set(A.bg).lerp(c2.set(B.bg), k);
+  const iris = !world.reduced && (i === 3 || i === 5);   // these two colour changes happen behind the iris overlay
+  S.bg.set(A.bg).lerp(c2.set(B.bg), iris ? (f >= 0.55 ? 1 : 0) : k);
   S.line.set(A.line).lerp(c2.set(B.line), k);
   S.tile.set(A.tile).lerp(c2.set(B.tile), k);
   S.glow.set(A.glow).lerp(c2.set(B.glow), k);

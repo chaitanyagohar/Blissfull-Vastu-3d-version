@@ -1,0 +1,38 @@
+/* Floating graha card: bottom-right over the open sky; appears only on hover/tap. No live blur (smoothness). */
+.card {
+  position: absolute; z-index: 3; right: clamp(70px, 7vw, 130px); bottom: clamp(56px, 9vh, 110px);
+  width: min(360px, 30vw); padding: 16px 18px;
+  border: 1px solid rgba(255, 246, 236, 0.14); border-top: 2px solid var(--g);
+  background: rgba(12, 7, 3, 0.86);
+  box-shadow: 0 -20px 50px -34px var(--g), 0 20px 40px rgba(0, 0, 0, 0.4);
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.35s, border-color 0.4s ease;
+}
+.show { opacity: 1; visibility: visible; transform: none; transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s, border-color 0.4s ease; }
+.inner { animation: cardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes cardIn { from { opacity: 0; transform: translateY(6px); } }
+
+.head { display: flex; align-items: center; gap: 14px; }
+.orb {
+  width: 36px; height: 36px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.75), var(--g) 42%, rgba(0, 0, 0, 0.55) 100%);
+  box-shadow: 0 0 26px var(--g), 0 0 0 1px rgba(255, 246, 236, 0.15);
+}
+.name { font-family: var(--serif); font-size: 28px; line-height: 1; }
+.sub { margin-top: 4px; font: 500 10px var(--mono); letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; }
+
+.rows { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; margin-top: 14px; }
+.rows div { padding-top: 8px; border-top: 1px solid rgba(255, 246, 236, 0.12); }
+.rows dt { font: 500 9.5px var(--mono); letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6; }
+.rows dd { margin-top: 3px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.swatch { width: 12px; height: 12px; border-radius: 50%; background: var(--g); box-shadow: 0 0 0 1px rgba(255, 246, 236, 0.3); flex: none; }
+
+/* phones: card sits at the top, over the planets, above the text panel */
+@media (max-width: 820px) {
+  .card { top: 84px; bottom: auto; left: var(--pad); right: var(--pad); width: auto; padding: 12px 14px; }
+  .orb { width: 26px; height: 26px; }
+  .name { font-size: 22px; }
+  .rows { gap: 6px 14px; margin-top: 10px; }
+  .rows dd { font-size: 12.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .inner { animation: none; } .card { transition: none; } }

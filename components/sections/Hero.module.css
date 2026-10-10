@@ -13,9 +13,9 @@
 .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
-  border: 1px solid rgba(53, 28, 12, 0.22); background: rgba(255, 246, 236, 0.55);
+  border: 1px solid rgba(53, 28, 12, 0.22); background: rgba(255, 246, 236, 0.85);
   font: 500 11px var(--mono); letter-spacing: 0.18em; text-transform: uppercase;
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+
 }
 .chip svg { width: 14px; height: 14px; color: var(--coffee); }
 .meta { display: grid; gap: 6px; justify-items: end; text-align: right; }

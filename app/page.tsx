@@ -19,6 +19,7 @@ import Testimonials from '@/components/sections/Testimonials';
 import Final from '@/components/sections/Final';
 import Footer from '@/components/sections/Footer';
 import { pageMeta } from '@/lib/seo';
+import Iris from '@/components/three/Iris';
 
 export const metadata: Metadata = pageMeta({ path: '/' });
 
@@ -28,6 +29,7 @@ export default function Home() {
       <JsonLd path="/" />
       <Loader />
       <WorldLoader />
+      <Iris />
       <Nav />
       <Hud />
       <Cursor />

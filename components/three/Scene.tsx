@@ -11,6 +11,7 @@ import { Jaali, Ground } from './Jaali';
 import Dust from './Dust';
 import CameraRig from './CameraRig';
 import HeroOrnaments from './HeroOrnaments';
+import Tattva from './Tattva';
 
 export default function Scene() {
   const { scene } = useThree();
@@ -18,7 +19,7 @@ export default function Scene() {
   useFrame(() => { sample(); }, -1);
   return (
     <>
-      <Lights /><CameraRig /><Ground /><Tiles /><HeroOrnaments /><PlanLines /><PlanLabels /><LoShuPath /><Numerals /><Navagraha /><Jaali /><Dust />
+      <Lights /><CameraRig /><Ground /><Tiles /><HeroOrnaments /><PlanLines /><PlanLabels /><Tattva /><LoShuPath /><Numerals /><Navagraha /><Jaali /><Dust />
     </>
   );
 }

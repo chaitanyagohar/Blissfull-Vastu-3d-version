@@ -19,8 +19,9 @@ export default function Lights() {
     c.left = -7; c.right = 7; c.top = 7; c.bottom = -7; c.near = 0.5; c.far = 40; c.updateProjectionMatrix();
     l.shadow.bias = -0.0006; l.shadow.normalBias = 0.02;
   }, [target]);
-  useFrame(() => {
+  useFrame((state) => {
     const P = sample();
+    state.gl.shadowMap.autoUpdate = P.shadow > 0.01 || P.jaali > 0.01;   // pause shadows in the space chapters
     const a = Math.PI * (0.08 + 0.84 * loc(2));
     v.vastu.set(Math.cos(a) * 9, Math.sin(a) * 7 + 1, 1.5);
     v.jaali.set(lerp(-3.5, 3.5, loc(5)), 3.6, -9);

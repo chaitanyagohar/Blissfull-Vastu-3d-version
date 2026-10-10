@@ -1,0 +1,9 @@
+.space, .light { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: none; }
+.space { background: #FFD4AE; }
+.light { background: #000; }
+.ring {
+  position: fixed; left: 0; top: 0; z-index: 0; pointer-events: none; display: none;
+  border: 1.5px solid var(--bronze); border-radius: 50%;
+  box-shadow: 0 0 30px rgba(194, 154, 108, 0.45), inset 0 0 30px rgba(194, 154, 108, 0.25);
+  will-change: transform, width, height;
+}
